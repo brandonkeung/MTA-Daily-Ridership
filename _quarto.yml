@@ -6,11 +6,11 @@ execute:
   echo: true
 
 book:
-  title: "YOUR PROJECT TITLE"
+  title: "MTA Daily Ridership"
   author:
-    - AUTHOR1 (UNI1)
-    - AUTHOR2 (UNI2)
-  repo-url: https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME
+    - Brandon Keung (bk2951)
+    - Ekow Andoh (eta2117)
+  repo-url: https://github.com/brandonkeung/MTA-Daily-Ridership
   date: today
   page-footer:
     right: |
