@@ -11,7 +11,7 @@ This data was collected by the state of New York for Data.gov; an official websi
 The data is recorded in a csv format and with daily updates. The daily ridership dataset provides systemwide ridership and traffic estimates for subways (including the Staten Island Railway), buses, Long Island Rail Road, Metro-North Railroad, Access-A-Ride, and Bridges and Tunnels, beginning 3/1/2020. Currently, we are only looking at this dataset but are open to exploring other datasets that are relevant to this topic.
 
 At a glance, the column names are descriptive but can be slightly ambiguous. For example, LIRR was not specified and further research needed to be done to determine that this stood for Long Island Rail Road. In addition, it is slightly ambiguous how the % of compareable pre-pandemic day is calculated. Further investigation into the dataset and its background will be needed to deduce this.
-
+ 
 (suggested: 1/2 page)
 
 ## 2.2 Missing value analysis
