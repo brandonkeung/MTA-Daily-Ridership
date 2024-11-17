@@ -1,1 +1,16 @@
 # Introduction
+Our team intends to leverage the MTA's daily ridership data to derive actionable 
+insights that could enhance the New York City transit system. The Metropolitan 
+Transportation Authority (MTA) is a vital agency responsible for operating public 
+transportation in New York City, including subways, buses, commuter rail, and 
+paratransit services. The daily ridership dataset, commencing on March 1, 2020, 
+offers granular information on system-wide ridership and traffic patterns across 
+various modes of transportation including the Staten Island Railway, buses, Long
+Island Rail Road, Metro-North Railroad, Access-A-Ride, and Bridges and Tunnels.
+
+
+We aim to analyze these data to understand the MTA's operational dynamics over 
+time, assess ridership frequency and volume, compare pre- and post-pandemic usage, 
+and identify emerging trends in passenger behavior.We believe these areas of focus 
+would be able to paint a vivid picture of New York City's past and present behaviors 
+as well as providing some insights on areas of improvements and or decline.
