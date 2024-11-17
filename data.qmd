@@ -1,5 +1,11 @@
 # Data
+https://catalog.data.gov/dataset/mta-daily-ridership-data-beginning-2020
 
 ## Description
+This data was collected by the state of New York for Data.gov; an official website of the United States government. This dataset is intended for public access and use and is covered by the Terms of Use under Data.gov.
+The data is recorded in a csv format and with daily updates. The daily ridership dataset provides systemwide ridership and traffic estimates for subways (including the Staten Island Railway), buses, Long Island Rail Road, Metro-North Railroad, Access-A-Ride, and Bridges and Tunnels, beginning 3/1/2020
 
-## Missing value analysis
+
+
+## Importation
+We intend on importing the data through a built-in csv reader in R studio
