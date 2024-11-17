@@ -14,7 +14,7 @@ At a glance, the column names are descriptive but can be slightly ambiguous. For
 
 (suggested: 1/2 page)
 
-## 2.2Missing value analysis
+## 2.2 Missing value analysis
 
 Describe any patterns you discover in missing values. If no values are missing, graphs should still be included showing that.
 
