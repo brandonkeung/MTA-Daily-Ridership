@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "MTA Daily Ridership",
     "section": "",
-    "text": "1 Introduction",
+    "text": "1 Introduction\nExplain why you chose this topic, and the questions you are interested in studying. Provide context for readers who are not familiar with the topic.\nAs two people who recently moved to New York City, we decided to choose a dataset that related to the MTA which primarily resides in New York City. We noticed the dataset primarily compares it’s daily ridership in comparison to its days prior to the pandemic. We thought it would be interesting to evaluate which aspects of MTA was impacted the most by the pandemic and how each sector has recovered. In particular the dataset focuses on subway, buses, Long Island Rail Road (LIRR), metro north, access A ride, bridges and tunnels, and Staten Island railway. With data from 03/01/2020 to 11/14/2024, we are able to see how the total estimated ridership changed over the past 4 years. …\n(suggested: 1/2 page)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
@@ -14,7 +14,7 @@
     "href": "data.html",
     "title": "2  Data",
     "section": "",
-    "text": "2.1 Description",
+    "text": "2.1 2.1 Description\nIdentify one or more data sources (see II. D. above) that you propose to draw on for the project. For each, describe how the data are collected and by whom. Describe the format of the data, the frequency of updates, dimensions, and any other relevant information. Note any issues / problems with the data, either known or that you discover. Explain how you plan to import the data. Carefully document your sources with links to the precise data sources that you used. If that is not possible (for example if your data is not available online, then explain that clearly.)\nOur data came from Data.gov https://catalog.data.gov/dataset/mta-daily-ridership-data-beginning-2020 which includes many public datasets in a variety of different topics such as produce prices, electric vehicle population, voter registration, and national student loan data. Currently, we are only looking at this dataset but are open to exploring other datasets that are relevant to this topic.\nAt a glance, the column names are descriptive but can be slightly ambiguous. For example, LIRR was not specified and further research needed to be done to determine that this stood for Long Island Rail Road. In addition, it is slightly ambiguous how the % of compareable pre-pandemic day is calculated. Further investigation into the dataset and its background will be needed to deduce this.\n(suggested: 1/2 page)",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
     ]
@@ -23,8 +23,8 @@
     "objectID": "data.html#missing-value-analysis",
     "href": "data.html#missing-value-analysis",
     "title": "2  Data",
-    "section": "2.2 Missing value analysis",
-    "text": "2.2 Missing value analysis",
+    "section": "2.2 2.2Missing value analysis",
+    "text": "2.2 2.2Missing value analysis\nDescribe any patterns you discover in missing values. If no values are missing, graphs should still be included showing that.\n(suggested: 2 graphs plus commentary)",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data</span>"
     ]

@@ -1,5 +1,24 @@
 # Data
 
-## Description
+## 2.1 Description
 
-## Missing value analysis
+Identify one or more data sources (see II. D. above) that you propose to draw on for the project. For each, describe how the data are collected and by whom. Describe the format of the data, the frequency of updates, dimensions, and any other relevant information. Note any issues / problems with the data, either known or that you discover. Explain how you plan to import the data. Carefully document your sources with links to the precise data sources that you used. If that is not possible (for example if your data is not available online, then explain that clearly.)
+
+Our data came from Data.gov https://catalog.data.gov/dataset/mta-daily-ridership-data-beginning-2020 which includes many public datasets in a variety of different topics such as produce prices, electric vehicle population, voter registration, and national student loan data. Currently, we are only looking at this dataset but are open to exploring other datasets that are relevant to this topic.
+
+At a glance, the column names are descriptive but can be slightly ambiguous. For example, LIRR was not specified and further research needed to be done to determine that this stood for Long Island Rail Road. In addition, it is slightly ambiguous how the % of compareable pre-pandemic day is calculated. Further investigation into the dataset and its background will be needed to deduce this.
+
+(suggested: 1/2 page)
+
+
+## 2.2Missing value analysis
+
+Describe any patterns you discover in missing values. If no values are missing, graphs should still be included showing that.
+
+(suggested: 2 graphs plus commentary)
+
+
+ 
+
+
+
