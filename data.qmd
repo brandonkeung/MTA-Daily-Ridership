@@ -12,7 +12,7 @@ The data is recorded in a csv format and with daily updates. The daily ridership
 
 At a glance, the column names are descriptive but can be slightly ambiguous. For example, LIRR was not specified and further research needed to be done to determine that this stood for Long Island Rail Road. In addition, it is slightly ambiguous how the % of compareable pre-pandemic day is calculated. Further investigation into the dataset and its background will be needed to deduce this.
 
-(suggested: 1/2 page)
+(suggested: 1/2 page) 
 
 ## 2.2 Missing value analysis
 
