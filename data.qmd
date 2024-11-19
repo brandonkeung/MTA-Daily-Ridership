@@ -1,6 +1,7 @@
 # Data
 https://catalog.data.gov/dataset/mta-daily-ridership-data-beginning-2020
 
+<<<<<<< HEAD
 ## Description
 This data was collected by the state of New York for Data.gov; an official website of the United States government. This dataset is intended for public access and use and is covered by the Terms of Use under Data.gov.
 The data is recorded in a csv format and with daily updates. The daily ridership dataset provides systemwide ridership and traffic estimates for subways (including the Staten Island Railway), buses, Long Island Rail Road, Metro-North Railroad, Access-A-Ride, and Bridges and Tunnels, beginning 3/1/2020
@@ -8,4 +9,57 @@ The data is recorded in a csv format and with daily updates. The daily ridership
 
 
 ## Importation
+=======
+https://catalog.data.gov/dataset/mta-daily-ridership-data-beginning-2020
+
+## 2.1 Description
+
+Identify one or more data sources (see II. D. above) that you propose to draw on for the project. For each, describe how the data are collected and by whom. Describe the format of the data, the frequency of updates, dimensions, and any other relevant information. Note any issues / problems with the data, either known or that you discover. Explain how you plan to import the data. Carefully document your sources with links to the precise data sources that you used. If that is not possible (for example if your data is not available online, then explain that clearly.)
+
+This data was collected by the state of New York for Data.gov; an official website of the United States government. This dataset is intended for public access and use and is covered by the Terms of Use under Data.gov.
+
+The data is recorded in a csv format and with daily updates. The daily ridership dataset provides systemwide ridership and traffic estimates for subways (including the Staten Island Railway), buses, Long Island Rail Road, Metro-North Railroad, Access-A-Ride, and Bridges and Tunnels, beginning 3/1/2020. Currently, we are only looking at this dataset but are open to exploring other datasets that are relevant to this topic.
+
+At a glance, the column names are descriptive but can be slightly ambiguous. For example, LIRR was not specified and further research needed to be done to determine that this stood for Long Island Rail Road. In addition, it is slightly ambiguous how the % of compareable pre-pandemic day is calculated. Further investigation into the dataset and its background will be needed to deduce this.
+
+ 
+
+## 2.2 Missing value analysis
+
+Describe any patterns you discover in missing values. If no values are missing, graphs should still be included showing that.
+
+![](images/clipboard-3207065581.png)
+
+The bar chart here shows that there are no missing values for all the columns in the dataframe. The result for the R code: "colSums(is.na(df))" also shows there are no missing values
+
+```         
+                                                  Date                      Subways..Total.Estimated.Ridership 
+                                                      0                                                       0 
+              Subways....of.Comparable.Pre.Pandemic.Day                        Buses..Total.Estimated.Ridership 
+                                                      0                                                       0 
+                Buses....of.Comparable.Pre.Pandemic.Day                         LIRR..Total.Estimated.Ridership 
+                                                      0                                                       0 
+                 LIRR....of.Comparable.Pre.Pandemic.Day                  Metro.North..Total.Estimated.Ridership 
+                                                      0                                                       0 
+          Metro.North....of.Comparable.Pre.Pandemic.Day                    Access.A.Ride..Total.Scheduled.Trips 
+                                                      0                                                       0 
+        Access.A.Ride....of.Comparable.Pre.Pandemic.Day                      Bridges.and.Tunnels..Total.Traffic 
+                                                      0                                                       0 
+  Bridges.and.Tunnels....of.Comparable.Pre.Pandemic.Day        Staten.Island.Railway..Total.Estimated.Ridership 
+                                                      0                                                       0 
+Staten.Island.Railway....of.Comparable.Pre.Pandemic.Day 
+                                                      0 
+```
+
+
+
+![](images/00001f.png)
+
+This visualization shows the proportion of data missing and/or present in the dataset. In our specific dataset there are no missing data from any of the columns; making it ready for processing.
+
+
+
+## Importation
+
+
 We intend on importing the data through a built-in csv reader in R studio
