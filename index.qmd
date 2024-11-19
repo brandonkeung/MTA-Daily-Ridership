@@ -23,5 +23,5 @@ As two people who recently moved to New York City, we decided to choose a datase
 
 We aim to analyze these data to understand the MTA's operational dynamics over time, assess ridership frequency and volume, compare pre- and post-pandemic usage, and identify emerging trends in passenger behavior.We believe these areas of focus would be able to paint a vivid picture of New York City's past and present behaviors as well as providing some insights on areas of improvements and or decline. With data from 03/01/2020 to 11/14/2024, we are able to see how the total estimated ridership changed over the past 4 years.
 
-(suggested: 1/2 page)
+
 
