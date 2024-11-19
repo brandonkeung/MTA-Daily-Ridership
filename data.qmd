@@ -18,6 +18,29 @@ At a glance, the column names are descriptive but can be slightly ambiguous. For
 
 Describe any patterns you discover in missing values. If no values are missing, graphs should still be included showing that.
 
+![](images/clipboard-3207065581.png)
+
+The bar chart here shows that there are no missing values for all the columns in the dataframe. The result for the R code: "colSums(is.na(df))" also shows there are no missing values
+
+```         
+                                                  Date                      Subways..Total.Estimated.Ridership 
+                                                      0                                                       0 
+              Subways....of.Comparable.Pre.Pandemic.Day                        Buses..Total.Estimated.Ridership 
+                                                      0                                                       0 
+                Buses....of.Comparable.Pre.Pandemic.Day                         LIRR..Total.Estimated.Ridership 
+                                                      0                                                       0 
+                 LIRR....of.Comparable.Pre.Pandemic.Day                  Metro.North..Total.Estimated.Ridership 
+                                                      0                                                       0 
+          Metro.North....of.Comparable.Pre.Pandemic.Day                    Access.A.Ride..Total.Scheduled.Trips 
+                                                      0                                                       0 
+        Access.A.Ride....of.Comparable.Pre.Pandemic.Day                      Bridges.and.Tunnels..Total.Traffic 
+                                                      0                                                       0 
+  Bridges.and.Tunnels....of.Comparable.Pre.Pandemic.Day        Staten.Island.Railway..Total.Estimated.Ridership 
+                                                      0                                                       0 
+Staten.Island.Railway....of.Comparable.Pre.Pandemic.Day 
+                                                      0 
+```
+
 (suggested: 2 graphs plus commentary)
 
 ## Importation

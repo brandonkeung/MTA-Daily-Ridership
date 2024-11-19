@@ -1,0 +1,52 @@
+---
+title: "EDA"
+author: "Brandon Keung, Ekow Andoh"
+date: "2024-11-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(naniar)
+```
+
+
+```{r}
+df <- read.csv("MTA_Daily_Ridership_Data__Beginning_2020.csv")
+df
+```
+
+```{r}
+colSums(is.na(df))
+```
+
+```{r}
+missing_data <- data.frame(
+  Column = names(missing_counts),
+  Missing = missing_counts
+)
+
+# Create the bar plot
+bar_plot <- ggplot(missing_data, aes(x = Column, y = Missing)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  theme_minimal() +
+  labs(title = "Missing Values by Column", x = "Columns", y = "Number of Missing Values") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 1))
+bar_plot
+```
+
+```{r}
+bar_plot <- gg_miss_var(df, show_pct = TRUE) +
+  ggtitle("Count of Missing Values by Variable") +
+  theme_minimal()
+bar_plot
+```
+
+
+
+
