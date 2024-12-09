@@ -1,15 +1,5 @@
 # Data
-https://catalog.data.gov/dataset/mta-daily-ridership-data-beginning-2020
 
-<<<<<<< HEAD
-## Description
-This data was collected by the state of New York for Data.gov; an official website of the United States government. This dataset is intended for public access and use and is covered by the Terms of Use under Data.gov.
-The data is recorded in a csv format and with daily updates. The daily ridership dataset provides systemwide ridership and traffic estimates for subways (including the Staten Island Railway), buses, Long Island Rail Road, Metro-North Railroad, Access-A-Ride, and Bridges and Tunnels, beginning 3/1/2020
-
-
-
-## Importation
-=======
 https://catalog.data.gov/dataset/mta-daily-ridership-data-beginning-2020
 
 ## 2.1 Description
@@ -21,8 +11,6 @@ This data was collected by the state of New York for Data.gov; an official websi
 The data is recorded in a csv format and with daily updates. The daily ridership dataset provides systemwide ridership and traffic estimates for subways (including the Staten Island Railway), buses, Long Island Rail Road, Metro-North Railroad, Access-A-Ride, and Bridges and Tunnels, beginning 3/1/2020. Currently, we are only looking at this dataset but are open to exploring other datasets that are relevant to this topic.
 
 At a glance, the column names are descriptive but can be slightly ambiguous. For example, LIRR was not specified and further research needed to be done to determine that this stood for Long Island Rail Road. In addition, it is slightly ambiguous how the % of compareable pre-pandemic day is calculated. Further investigation into the dataset and its background will be needed to deduce this.
-
- 
 
 ## 2.2 Missing value analysis
 
@@ -51,15 +39,10 @@ Staten.Island.Railway....of.Comparable.Pre.Pandemic.Day
                                                       0 
 ```
 
-
-
 ![](images/00001f.png)
 
 This visualization shows the proportion of data missing and/or present in the dataset. In our specific dataset there are no missing data from any of the columns; making it ready for processing.
 
-
-
 ## Importation
-
 
 We intend on importing the data through a built-in csv reader in R studio
