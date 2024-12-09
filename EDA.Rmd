@@ -10,13 +10,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+library(dplyr)
 library(ggplot2)
 library(naniar)
+library(tidyr)
+library(GGally)
+library(reshape2)
 ```
 
 
 ```{r}
-df <- read.csv("MTA_Daily_Ridership_Data__Beginning_2020.csv")
+df <- read.csv("MTA_Daily_Ridership_Data__Beginning_2020.csv", check.names = FALSE)
 df
 ```
 
@@ -47,6 +51,131 @@ bar_plot <- gg_miss_var(df, show_pct = TRUE) +
 bar_plot
 ```
 
+```{r}
+data_long <- df %>%
+  pivot_longer(cols = c(`Subways: Total Estimated Ridership`, 
+                         `Buses: Total Estimated Ridership`, 
+                         `LIRR: Total Estimated Ridership`, 
+                         `Metro-North: Total Estimated Ridership`),
+               names_to = "Mode", values_to = "Ridership") %>%
+  filter(grepl("Total Estimated Ridership", Mode))
+
+ggplot(data_long, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = Ridership, color = Mode)) +
+  geom_line() +
+  labs(title = "Ridership Trends Over Time", x = "Date", y = "Ridership", color = "Transport Mode")
+```
+
+```{r}
+df$PandemicPeriod <- ifelse(
+  as.Date(df$Date, format = "%m/%d/%Y") < as.Date("2021-01-01"),
+  "Pre-Pandemic",
+  "Post-Pandemic"
+)
+
+data_percentages <- df %>%
+  pivot_longer(
+    cols = ends_with("% of Comparable Pre-Pandemic Day"),
+    names_to = "Mode",
+    values_to = "Percentage"
+  )
+
+ggplot(data_percentages, aes(x = Mode, y = Percentage, fill = PandemicPeriod)) +
+  geom_boxplot() +
+  coord_flip() +
+  labs(
+    title = "Comparison of Ridership to Pre-Pandemic Levels",
+    x = "Transport Mode",
+    y = "Percentage of Pre-Pandemic"
+  )
+```
+
+```{r}
+df$Date <- as.Date(df$Date, format = "%m/%d/%Y")
+df$Month <- format(df$Date, "%Y-%m")
+
+# Summarize the data by Month, summing the ridership columns
+monthly_ridership <- df %>%
+  group_by(Month) %>%
+  summarise(
+    TotalRidership = sum(`Subways: Total Estimated Ridership`, 
+                         `Buses: Total Estimated Ridership`, 
+                         `LIRR: Total Estimated Ridership`, 
+                         `Metro-North: Total Estimated Ridership`, 
+                         na.rm = TRUE)
+  )
+
+# Convert Month to a Date object, assuming it's the first day of the month
+monthly_ridership$Month <- as.Date(paste0(monthly_ridership$Month, "-01"))
+
+# Plotting the monthly ridership trends
+ggplot(monthly_ridership, aes(x = Month, y = TotalRidership)) +
+  geom_line() +
+  labs(title = "Monthly Ridership Trends", x = "Month", y = "Total Ridership")
+```
+
+
+
+```{r}
+
+# Select the columns you're interested in
+ridership_data <- df %>%
+  select(`Subways: Total Estimated Ridership`, 
+         `Buses: Total Estimated Ridership`, 
+         `LIRR: Total Estimated Ridership`, 
+         `Metro-North: Total Estimated Ridership`)
+
+# Use ggpairs to visualize the correlation between different ridership modes
+ggpairs(ridership_data, title = "Correlation Between Ridership of Different Modes")
+```
+
+```{r}
+data_recovery <- df %>%
+  pivot_longer(cols = ends_with("% of Comparable Pre-Pandemic Day"),
+               names_to = "Mode", values_to = "RecoveryPercentage")
+
+ggplot(data_recovery, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = RecoveryPercentage, color = Mode)) +
+  geom_line() +
+  labs(title = "Percentage Recovery by Mode Over Time", x = "Date", y = "Percentage of Pre-Pandemic")
+```
+
+```{r}
+heatmap_data <- df %>%
+  select(Date, ends_with("% of Comparable Pre-Pandemic Day")) %>%
+  melt(id.vars = "Date", variable.name = "Mode", value.name = "Percentage")
+
+ggplot(heatmap_data, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = Mode, fill = Percentage)) +
+  geom_tile() +
+  scale_fill_gradient(low = "blue", high = "red") +
+  labs(title = "Heatmap of Ridership Recovery Over Time", x = "Date", y = "Mode")
+```
+
+```{r}
+ggplot(df, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = `Bridges and Tunnels: Total Traffic`)) +
+  geom_line(color = "steelblue") +
+  labs(title = "Bridges and Tunnels Traffic Over Time", x = "Date", y = "Total Traffic")
+```
+
+```{r}
+df$Year <- format(as.Date(df$Date, format = "%m/%d/%Y"), "%Y")
+
+annual_mode_share <- df %>%
+  group_by(Year) %>%
+  summarise(across(ends_with("Total Estimated Ridership"), sum, na.rm = TRUE)) %>%
+  pivot_longer(-Year, names_to = "Mode", values_to = "Ridership")
+
+ggplot(annual_mode_share, aes(x = Year, y = Ridership, fill = Mode)) +
+  geom_bar(stat = "identity", position = "fill") +
+  labs(title = "Mode Share by Year", x = "Year", y = "Proportion")
+```
+
+```{r}
+ggplot(df, aes(x = `Bridges and Tunnels: Total Traffic`, 
+                 y = `Subways: % of Comparable Pre-Pandemic Day`)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "Ridership Recovery vs. Bridges and Tunnels Traffic", 
+       x = "Total Traffic", y = "Subway Recovery Percentage")
+```
 
 
 
