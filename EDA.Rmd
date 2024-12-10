@@ -68,7 +68,7 @@ ggplot(data_long, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = Ridership, col
 ```{r}
 df$PandemicPeriod <- ifelse(
   as.Date(df$Date, format = "%m/%d/%Y") < as.Date("2021-01-01"),
-  "Pre-Pandemic",
+  "Pandemic",
   "Post-Pandemic"
 )
 
@@ -85,7 +85,7 @@ ggplot(data_percentages, aes(x = Mode, y = Percentage, fill = PandemicPeriod)) +
   labs(
     title = "Comparison of Ridership to Pre-Pandemic Levels",
     x = "Transport Mode",
-    y = "Percentage of Pre-Pandemic"
+    y = "% Compareable Pre-Pandemic"
   )
 ```
 
@@ -139,14 +139,14 @@ ggplot(data_recovery, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = RecoveryPe
 ```
 
 ```{r}
-heatmap_data <- df %>%
-  select(Date, ends_with("% of Comparable Pre-Pandemic Day")) %>%
-  melt(id.vars = "Date", variable.name = "Mode", value.name = "Percentage")
+# heatmap_data <- df %>%
+#   select(Date, ends_with("% of Comparable Pre-Pandemic Day")) %>%
+#   melt(id.vars = "Date", variable.name = "Mode", value.name = "Percentage")
 
-ggplot(heatmap_data, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = Mode, fill = Percentage)) +
-  geom_tile() +
-  scale_fill_gradient(low = "blue", high = "red") +
-  labs(title = "Heatmap of Ridership Recovery Over Time", x = "Date", y = "Mode")
+# ggplot(heatmap_data, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = Mode, fill = Percentage)) +
+#   geom_tile() +
+#   scale_fill_gradient(low = "blue", high = "red") +
+#   labs(title = "Heatmap of Ridership Recovery Over Time", x = "Date", y = "Mode")
 ```
 
 ```{r}
