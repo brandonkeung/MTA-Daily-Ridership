@@ -173,10 +173,26 @@ ul.task-list li input[type="checkbox"] {
   * {
     font-family: sans-serif;
   }
+  .tooltip {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    pointer-events: none;
+    font-size: 12px;
+  }
 </style>
 <div id="plot">
 
 </div>
+<p>
+</p>
+<button type="button" onclick="add()">
+Add Year
+</button>
+<button type="button" onclick="remove()">
+Remove Year
+</button>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="scripts/myscript.js"></script>
 
