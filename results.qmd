@@ -24,8 +24,10 @@ From the previous graphics, I noticed that Bridges and Tunnels seemed to differ 
 
 ![](images/000014.png)
 
+This stacked ba chart shows the proportion of the modes of transportation with respect to each year. The proportion is relatively unchanged throughout the years from 2020 to 2024. We can There is a slight decrease in proportion of subway ridership in 2021 compared to the other years and increase in proportion of bus ridership in 2021.
+
 ![](images/000015.png)
 
-![](images/000010.png)
-
 ![](images/000028.png)
+
+This graphic shows the trends of modes of transportation with respect to time. We can evidently see that subway is the most popular form of transportation throughout the entire time period observed. We also observe that metro-north seemed to have the least ridership throughout the time window. It is also common to see many different modes of transportation following similar patterns. For example, at the end of 2021/start of 2022, all modes of transportation can be seen with a dip.
