@@ -24,6 +24,7 @@ From the previous graphics, we noticed that Bridges and Tunnels seemed to differ
 
 ## How did the pandemic affect ridership accross different modes of transportation over time?
 Understanding the temporal effects of the pandemic on transportation usage is critical for planning recovery strategies and future crises. Comparing the trends across all transportation modes will reveal resilience or vulnerabilities in the system. It is expected that different transportation modes might show varying recovery rates based on accessibility or dependence.Identifying patterns will help assess infrastructure priorities and evaluate public behavior changes.
+
 ```{r}
 dataset <- read.csv("MTA_Daily_Ridership_Data__Beginning_2020.csv")
 ```
