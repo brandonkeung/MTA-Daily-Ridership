@@ -99,9 +99,17 @@ correlation_matrix <- dataset %>%
 
 # Heatmap
 library(ggcorrplot)
-ggcorrplot(correlation_matrix, hc.order = TRUE, type = "lower",
+ggcorrplot(correlation_matrix, 
+           hc.order = TRUE, 
+           type = "lower",
            title = "Correlation Between Ridership and Recovery Percentages",
-           lab = TRUE)
+           lab = FALSE, # Remove the numbers in the squares
+           ggtheme = theme_minimal()) + 
+  theme(
+    plot.title = element_text(hjust = 0.5),  # Center the title
+    axis.text.x = element_text(size = 7),  # Adjust size of x-axis labels
+    axis.text.y = element_text(size = 7)   # Adjust size of y-axis labels
+  )
 ```
 
 Findings:Across the board there is positive correlation between each factor. This shows us that the ridership generally moves in relation with each other in whichever direction. This creates great insights will help optimize services for sustained demand.
