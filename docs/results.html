@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -144,8 +178,25 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#how-do-the-modes-of-transportation-stack-up-to-each-other-in-terms-of-pre-pandemic-ridership" id="toc-how-do-the-modes-of-transportation-stack-up-to-each-other-in-terms-of-pre-pandemic-ridership" class="nav-link active" data-scroll-target="#how-do-the-modes-of-transportation-stack-up-to-each-other-in-terms-of-pre-pandemic-ridership"><span class="header-section-number">3.1</span> How do the modes of transportation stack up to each other in terms of pre-pandemic ridership?</a></li>
+  <li><a href="#in-total-what-is-the-rate-of-ridership-across-all-modes-from-2020-to-2024" id="toc-in-total-what-is-the-rate-of-ridership-across-all-modes-from-2020-to-2024" class="nav-link" data-scroll-target="#in-total-what-is-the-rate-of-ridership-across-all-modes-from-2020-to-2024"><span class="header-section-number">3.2</span> In total, what is the rate of ridership across all modes from 2020 to 2024?</a></li>
+  <li><a href="#how-did-bridge-and-tunnel-traffic-behave-throughout-the-time-period" id="toc-how-did-bridge-and-tunnel-traffic-behave-throughout-the-time-period" class="nav-link" data-scroll-target="#how-did-bridge-and-tunnel-traffic-behave-throughout-the-time-period"><span class="header-section-number">3.3</span> How did bridge and tunnel traffic behave throughout the time period?</a></li>
+  <li><a href="#how-did-the-pandemic-affect-ridership-accross-different-modes-of-transportation-over-time" id="toc-how-did-the-pandemic-affect-ridership-accross-different-modes-of-transportation-over-time" class="nav-link" data-scroll-target="#how-did-the-pandemic-affect-ridership-accross-different-modes-of-transportation-over-time"><span class="header-section-number">3.4</span> How did the pandemic affect ridership accross different modes of transportation over time?</a></li>
+  <li><a href="#what-is-the-recovery-of-the-modes-or-transportation-compared-to-pre-pandemic-levels" id="toc-what-is-the-recovery-of-the-modes-or-transportation-compared-to-pre-pandemic-levels" class="nav-link" data-scroll-target="#what-is-the-recovery-of-the-modes-or-transportation-compared-to-pre-pandemic-levels"><span class="header-section-number">3.5</span> What is the recovery of the modes or transportation compared to pre-pandemic levels?</a></li>
+  <li><a href="#what-are-the-correlations-between-ridership-and-pre-pandemic-recovery-percentages-across-modes" id="toc-what-are-the-correlations-between-ridership-and-pre-pandemic-recovery-percentages-across-modes" class="nav-link" data-scroll-target="#what-are-the-correlations-between-ridership-and-pre-pandemic-recovery-percentages-across-modes"><span class="header-section-number">3.6</span> What are the correlations between ridership and pre-pandemic recovery percentages across modes?</a></li>
+  <li><a href="#what-is-the-behavior-of-subway-ridership-from-weekdays-to-weekends" id="toc-what-is-the-behavior-of-subway-ridership-from-weekdays-to-weekends" class="nav-link" data-scroll-target="#what-is-the-behavior-of-subway-ridership-from-weekdays-to-weekends"><span class="header-section-number">4</span> What is the behavior of subway ridership from weekdays to weekends?</a>
+  <ul class="collapse">
+  <li><a href="#are-certain-transportation-modes-more-affected-during-specific-seasons" id="toc-are-certain-transportation-modes-more-affected-during-specific-seasons" class="nav-link" data-scroll-target="#are-certain-transportation-modes-more-affected-during-specific-seasons"><span class="header-section-number">4.1</span> Are certain transportation modes more affected during specific seasons?</a></li>
+  <li><a href="#how-does-access-a-ride-usage-differ-compared-to-other-modes-especially-during-and-post-pandemic" id="toc-how-does-access-a-ride-usage-differ-compared-to-other-modes-especially-during-and-post-pandemic" class="nav-link" data-scroll-target="#how-does-access-a-ride-usage-differ-compared-to-other-modes-especially-during-and-post-pandemic"><span class="header-section-number">4.2</span> How does Access-A-Ride usage differ compared to other modes, especially during and post-pandemic?</a></li>
+  <li><a href="#how-do-bridges-and-tunnels-compare-to-other-transit-systems-in-terms-of-recovery-and-usage" id="toc-how-do-bridges-and-tunnels-compare-to-other-transit-systems-in-terms-of-recovery-and-usage" class="nav-link" data-scroll-target="#how-do-bridges-and-tunnels-compare-to-other-transit-systems-in-terms-of-recovery-and-usage"><span class="header-section-number">4.3</span> How do bridges and tunnels compare to other transit systems in terms of recovery and usage?</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/brandonkeung/MTA-Daily-Ridership/edit/main/results.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/brandonkeung/MTA-Daily-Ridership/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -169,24 +220,342 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="how-do-the-modes-of-transportation-stack-up-to-each-other-in-terms-of-pre-pandemic-ridership" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="how-do-the-modes-of-transportation-stack-up-to-each-other-in-terms-of-pre-pandemic-ridership"><span class="header-section-number">3.1</span> How do the modes of transportation stack up to each other in terms of pre-pandemic ridership?</h2>
 <p><img src="images/00001a.png" class="img-fluid"></p>
 <p>This graph shows a five point summary for each of the 7 ways of transportation in the dataset grouped by during the pandemic and post pandemic. This highlights the outliers, range, and central points of each form of transportation. To interpret this graphic, values below 1 mean that the useage of the specified form of transportation during the time period was below that of the pre-pandemic days. In contrast, values above 1 mean that the useage of the form of transportation was higher than that of the pre-pandemic days. From this graphic, we observe that during the pandemic, % of compareable pre-pandemic was almost exclusively below 1 meaning that the useage of almost all transportations went down for almost every single day. Few exceptions lie in the Access A Ride, Bridge and Tunnels, and Staten Island Railway. The central point of all forms of transportation for post-pandmic is higher than that of the same form of transportation during the pandemic which is to be expected. However, we can see that the central point tends to be below 1 meaning MTA hasn’t seemed to have fully recovered or hasn’t grown since pre-pandemic days.</p>
+</section>
+<section id="in-total-what-is-the-rate-of-ridership-across-all-modes-from-2020-to-2024" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="in-total-what-is-the-rate-of-ridership-across-all-modes-from-2020-to-2024"><span class="header-section-number">3.2</span> In total, what is the rate of ridership across all modes from 2020 to 2024?</h2>
 <p><img src="images/000023.png" class="img-fluid"></p>
 <p>This graphic shows overall monthly ridership across subways, buses, LIRR, and Metro-North. We can see trends of ridership with respect to time. Early 2020, we can observe a sharp dip when the COVID-19 pandmic lockdowns started. We can see an upward trend in ridership as COVID-19 restrictions lift.</p>
-<p><img src="images/000010.png" class="img-fluid"></p>
-<p>[FIX LABELS AND AXIS NOT READABLE]</p>
-<p><img src="images/000011.png" class="img-fluid"></p>
-<p>This graphic shows percentage recovery during the pandmeic and post-pandemic. Similar to the first graphic, we notice how MTA did not make a full recovery which would be marked at the 1.0 mark for percentage of pre-pandemic. We can see similar results as Bridge and Tunnels seems to be the least impacted form of transportation while subway was more highly impacted. This can be observed as subway can be seen on the lower portion of the graphic.</p>
-<p>Deleted images/000012.png bc i dont think its a very helpful graphic</p>
+</section>
+<section id="how-did-bridge-and-tunnel-traffic-behave-throughout-the-time-period" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="how-did-bridge-and-tunnel-traffic-behave-throughout-the-time-period"><span class="header-section-number">3.3</span> How did bridge and tunnel traffic behave throughout the time period?</h2>
 <p><img src="images/000013.png" class="img-fluid"></p>
-<p>From the previous graphics, I noticed that Bridges and Tunnels seemed to differ from the other modes of transportation. The percentage recovery was typically higher than other modes. Logically, this makes sense as Bridges and Tunnel traffic can be impacted by both public transportation (buses) and “private transportation” such as cars and motorcycles. This graphic investigates the overall traffic over time for bridges and tunnels. This shows sharp declines in COVID-19 restrictions were placed but recovered very quickly.</p>
-<p><img src="images/000014.png" class="img-fluid"></p>
-<p>This stacked ba chart shows the proportion of the modes of transportation with respect to each year. The proportion is relatively unchanged throughout the years from 2020 to 2024. We can There is a slight decrease in proportion of subway ridership in 2021 compared to the other years and increase in proportion of bus ridership in 2021.</p>
-<p><img src="images/000015.png" class="img-fluid"></p>
-<p><img src="images/000028.png" class="img-fluid"></p>
-<p>This graphic shows the trends of modes of transportation with respect to time. We can evidently see that subway is the most popular form of transportation throughout the entire time period observed. We also observe that metro-north seemed to have the least ridership throughout the time window. It is also common to see many different modes of transportation following similar patterns. For example, at the end of 2021/start of 2022, all modes of transportation can be seen with a dip.</p>
+<p>From the previous graphics, we noticed that Bridges and Tunnels seemed to differ from the other modes of transportation. The percentage recovery was typically higher than other modes. Logically, this makes sense as Bridges and Tunnel traffic can be impacted by both public transportation (buses) and “private transportation” such as cars and motorcycles. This graphic investigates the overall traffic over time for bridges and tunnels. This shows sharp declines in COVID-19 restrictions were placed but recovered very quickly.</p>
+</section>
+<section id="how-did-the-pandemic-affect-ridership-accross-different-modes-of-transportation-over-time" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="how-did-the-pandemic-affect-ridership-accross-different-modes-of-transportation-over-time"><span class="header-section-number">3.4</span> How did the pandemic affect ridership accross different modes of transportation over time?</h2>
+<p>Understanding the temporal effects of the pandemic on transportation usage is critical for planning recovery strategies and future crises. Comparing the trends across all transportation modes will reveal resilience or vulnerabilities in the system. It is expected that different transportation modes might show varying recovery rates based on accessibility or dependence.Identifying patterns will help assess infrastructure priorities and evaluate public behavior changes.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dataset <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"MTA_Daily_Ridership_Data__Beginning_2020.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dataset<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(dataset<span class="sc">$</span>Date, <span class="st">"%d/%m/%Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'lubridate'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>monthly_data <span class="ot">&lt;-</span> dataset <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Month =</span> <span class="fu">floor_date</span>(Date, <span class="st">"month"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">"Subways..Total.Estimated.Ridership"</span>, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Buses..Total.Estimated.Ridership"</span>, </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"LIRR..Total.Estimated.Ridership"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Metro.North..Total.Estimated.Ridership"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Access.A.Ride..Total.Scheduled.Trips"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Bridges.and.Tunnels..Total.Traffic"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Staten.Island.Railway..Total.Estimated.Ridership"</span>), sum, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Month, <span class="at">names_to =</span> <span class="st">"Transport_Mode"</span>, <span class="at">values_to =</span> <span class="st">"Ridership"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: There was 1 warning in `summarize()`.
+ℹ In argument: `across(...)`.
+ℹ In group 1: `Month = 2020-01-01`.
+Caused by warning:
+! The `...` argument of `across()` is deprecated as of dplyr 1.1.0.
+Supply arguments directly to `.fns` through an anonymous function instead.
+
+  # Previously
+  across(a:b, mean, na.rm = TRUE)
+
+  # Now
+  across(a:b, \(x) mean(x, na.rm = TRUE))</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(monthly_data, <span class="fu">aes</span>(<span class="at">x =</span> Month, <span class="at">y =</span> Ridership, <span class="at">color =</span> Transport_Mode)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ridership Trends Over Time Across Transportation Modes (Log Scale)"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Month"</span>, <span class="at">y =</span> <span class="st">"Ridership (Log Scale)"</span>, <span class="at">color =</span> <span class="st">"Transport Mode"</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Findings: From the graph we can deduce that the subway has constantly been the preferred mode of transportation relative to all the other modes.It is also interesting to find that bridge and tunnel traffic has stayed very constant throughout the time frame.In regards to all the modes; it seems they have all stayed constant in terms of ridership preference as no mode has overtaken the other.Thus, identifying these patterns can help assess infrastructure priorities and evaluate public behavior changes.</p>
+</section>
+<section id="what-is-the-recovery-of-the-modes-or-transportation-compared-to-pre-pandemic-levels" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="what-is-the-recovery-of-the-modes-or-transportation-compared-to-pre-pandemic-levels"><span class="header-section-number">3.5</span> What is the recovery of the modes or transportation compared to pre-pandemic levels?</h2>
+<p>Identifying the recovery rates across different modes is key to allocating resources effectively. Comparing the “percentage of Comparable Pre-Pandemic Day” columns for each mode of transportation can highlight which transportation services have regained their ridership and which still fall behind.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>recovery_data <span class="ot">&lt;-</span> dataset <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">ends_with</span>(<span class="st">"Comparable.Pre.Pandemic.Day"</span>), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Transport_Mode"</span>, <span class="at">values_to =</span> <span class="st">"Recovery"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Cleveland dot plot</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(recovery_data, <span class="fu">aes</span>(<span class="at">x =</span> Recovery, <span class="at">y =</span> <span class="fu">reorder</span>(Transport_Mode, Recovery))) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Recovery to Pre-Pandemic Levels by Mode"</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Recovery (%)"</span>, <span class="at">y =</span> <span class="st">"Transport Mode"</span>) <span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Findings: From the graphic, we can see that Bridges and tunnels as well as Access A Ride have seen the highest levels of recovery. We can hypothesize that this swift recovery is because commuters and people with disabilities really do not have many options when it comes to transportation.This information can influence policies can focus on struggling modes, promoting ridership through targeted interventions.</p>
+</section>
+<section id="what-are-the-correlations-between-ridership-and-pre-pandemic-recovery-percentages-across-modes" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="what-are-the-correlations-between-ridership-and-pre-pandemic-recovery-percentages-across-modes"><span class="header-section-number">3.6</span> What are the correlations between ridership and pre-pandemic recovery percentages across modes?</h2>
+<p>We want to uncover if higher total ridership corresponds to higher recovery percentages, revealing structural dependencies. Modes with higher recovery may indicate critical systems, while weak correlations could suggest alternative modes or varying dependencies.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"Total.Estimated.Ridership"</span>), <span class="fu">ends_with</span>(<span class="st">"Comparable.Pre.Pandemic.Day"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Heatmap</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggcorrplot' was built under R version 4.4.2</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(correlation_matrix, <span class="at">hc.order =</span> <span class="cn">TRUE</span>, <span class="at">type =</span> <span class="st">"lower"</span>,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">"Correlation Between Ridership and Recovery Percentages"</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">lab =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Findings:Across the board there is positive correlation between each factor. This shows us that the ridership generally moves in relation with each other in whichever direction. This creates great insights will help optimize services for sustained demand.</p>
+</section>
+<section id="what-is-the-behavior-of-subway-ridership-from-weekdays-to-weekends" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> What is the behavior of subway ridership from weekdays to weekends?</h1>
+<p>These trends can indicate commuting patterns and leisure travel dynamics. Post-pandemic, commuting and recreational patterns might have shifted, affecting peak usage times.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dataset<span class="sc">$</span>DayType <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">weekdays</span>(<span class="fu">as.Date</span>(dataset<span class="sc">$</span>Date, <span class="st">"%d/%m/%Y"</span>)) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Saturday"</span>, <span class="st">"Sunday"</span>), <span class="st">"Weekend"</span>, <span class="st">"Weekday"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dataset, <span class="fu">aes</span>(<span class="at">x =</span> DayType, <span class="at">y =</span> <span class="st">`</span><span class="at">Subways..Total.Estimated.Ridership</span><span class="st">`</span>, <span class="at">fill =</span> DayType)) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ridership by Day Type (Weekday vs. Weekend)"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Day Type"</span>, <span class="at">y =</span> <span class="st">"Subway Total.Estimated.Ridership"</span>) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Findings: Here we see that the inter-quartile range of the weekday and weekend ridership is identical however there is a higher usage average on the weekends. This could be attributed to more people working from home during and after the pandemic as well as the increased tourism and yearn to socialize after the pandemic. Information like this can influence schedule optimization and fare policy adjustments.</p>
+<section id="are-certain-transportation-modes-more-affected-during-specific-seasons" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="are-certain-transportation-modes-more-affected-during-specific-seasons"><span class="header-section-number">4.1</span> Are certain transportation modes more affected during specific seasons?</h2>
+<p>Seasonal variations may affect transportation modes differently, depending on weather, holidays, and tourism. Comparing seasonal ridership trends can help predict demand.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dataset<span class="sc">$</span>Season <span class="ot">&lt;-</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">month</span>(dataset<span class="sc">$</span>Date) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Winter"</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">month</span>(dataset<span class="sc">$</span>Date) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Spring"</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">month</span>(dataset<span class="sc">$</span>Date) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="st">"Summer"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">month</span>(dataset<span class="sc">$</span>Date) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>) <span class="sc">~</span> <span class="st">"Fall"</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Recreate long_data including the Season column</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"Subways..Total.Estimated.Ridership"</span>, </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Buses..Total.Estimated.Ridership"</span>, </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"LIRR..Total.Estimated.Ridership"</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Metro.North..Total.Estimated.Ridership"</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Access.A.Ride..Total.Scheduled.Trips"</span>,</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Bridges.and.Tunnels..Total.Traffic"</span>,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Staten.Island.Railway..Total.Estimated.Ridership"</span>),</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Transport_Mode"</span>,</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"Ridership"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Season =</span> <span class="fu">case_when</span>(</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">month</span>(Date) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>) <span class="sc">~</span> <span class="st">"Winter"</span>,</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">month</span>(Date) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">~</span> <span class="st">"Spring"</span>,</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">month</span>(Date) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>) <span class="sc">~</span> <span class="st">"Summer"</span>,</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">month</span>(Date) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>) <span class="sc">~</span> <span class="st">"Fall"</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with density</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(long_data, <span class="fu">aes</span>(<span class="at">x =</span> Ridership, <span class="at">fill =</span> Season)) <span class="sc">+</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Transport_Mode, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Seasonal Density of Ridership by Transportation Mode"</span>,</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Ridership"</span>, <span class="at">y =</span> <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Findings: This visual is quite interesting as it continues to highlight the high correlation of the modes of transportation in terms of ridership. In all seasons, the spring and summer tends to have slightly more activity throughout the years. For the MTA, Seasonal data can inform promotional campaigns and maintenance schedules.</p>
+</section>
+<section id="how-does-access-a-ride-usage-differ-compared-to-other-modes-especially-during-and-post-pandemic" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="how-does-access-a-ride-usage-differ-compared-to-other-modes-especially-during-and-post-pandemic"><span class="header-section-number">4.2</span> How does Access-A-Ride usage differ compared to other modes, especially during and post-pandemic?</h2>
+<p>Access-A-Ride caters to specific populations, and its usage patterns may reveal social and mobility challenges during crises.This specialized service might show distinct trends compared to other modes.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fmsb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'fmsb' was built under R version 4.4.2</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>normalized_data <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> <span class="fu">scale</span>(.) <span class="sc">%&gt;%</span> <span class="fu">as.numeric</span>()))</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only ridership columns and reshape data for heatmap</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>heatmap_data <span class="ot">&lt;-</span> normalized_data <span class="sc">%&gt;%</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"Date"</span>,<span class="st">"Subways..Total.Estimated.Ridership"</span>, </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Buses..Total.Estimated.Ridership"</span>, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"LIRR..Total.Estimated.Ridership"</span>,</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Metro.North..Total.Estimated.Ridership"</span>,</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Access.A.Ride..Total.Scheduled.Trips"</span>,</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Bridges.and.Tunnels..Total.Traffic"</span>,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Staten.Island.Railway..Total.Estimated.Ridership"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Date, <span class="at">names_to =</span> <span class="st">"Transport_Mode"</span>, <span class="at">values_to =</span> <span class="st">"Normalized_Ridership"</span>)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Shorten column names for Transport_Mode</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>heatmap_data<span class="sc">$</span>Transport_Mode <span class="ot">&lt;-</span> <span class="fu">str_replace</span>(heatmap_data<span class="sc">$</span>Transport_Mode, <span class="st">"</span><span class="sc">\\</span><span class="st">..*"</span>, <span class="st">""</span>)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(heatmap_data, <span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span> Normalized_Ridership, <span class="at">color =</span> Transport_Mode)) <span class="sc">+</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Transport_Mode, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ridership Trends Over Time by Transportation Mode"</span>,</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Normalized Ridership"</span>) <span class="sc">+</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 7252 rows containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Findings: For all modes we do see a significant drop after the pandemic but the metro, LIRR and Access A Ride have regained their ridership either close to pre-pandemic levels or above it. This could be caused by housing/ neighborhood migration, increased activity and the need for diverse transportation solutions. Findings will support accessibility policies and resource allocation.</p>
+</section>
+<section id="how-do-bridges-and-tunnels-compare-to-other-transit-systems-in-terms-of-recovery-and-usage" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="how-do-bridges-and-tunnels-compare-to-other-transit-systems-in-terms-of-recovery-and-usage"><span class="header-section-number">4.3</span> How do bridges and tunnels compare to other transit systems in terms of recovery and usage?</h2>
+<p>Bridges and tunnels might serve as a proxy for private transportation recovery compared to public systems. Different recovery trends can reveal preferences for public vs.&nbsp;private transport post-pandemic.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>recovery_data <span class="ot">&lt;-</span> dataset <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">ends_with</span>(<span class="st">"Comparable.Pre.Pandemic.Day"</span>), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"Transport_Mode"</span>, <span class="at">values_to =</span> <span class="st">"Recovery"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Comparison =</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">"Bridges and Tunnels"</span>, Transport_Mode), <span class="st">"Bridges"</span>, <span class="st">"Other Modes"</span>))</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(recovery_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Transport_Mode, Recovery), <span class="at">y =</span> Recovery, <span class="at">fill =</span> Comparison)) <span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Recovery Comparison: Bridges vs. Other Modes"</span>,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Transportation Mode"</span>, <span class="at">y =</span> <span class="st">"Recovery (%)"</span>) <span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="results_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Findings: Post-pandemic ridership has indeed changed as people adapted to the new way of living. From this visual it seems more people left the inner city to other neighborhoods that driving is a lot more feasible in while still having attachments (jobs, friends/family) in the city. As bridges and tunnels have recovered a lot better since the pandemic there can be discussions that can help align policies for congestion and emissions reduction.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -629,7 +998,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/brandonkeung/MTA-Daily-Ridership/edit/main/results.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/brandonkeung/MTA-Daily-Ridership/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/brandonkeung/MTA-Daily-Ridership/edit/main/results.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/brandonkeung/MTA-Daily-Ridership/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
