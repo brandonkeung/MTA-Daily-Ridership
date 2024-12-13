@@ -1,21 +1,37 @@
-# Interactive graph
+# D3 Graph
+
+## Interactive Subway Ridership by Season
 
 <style>
-  * {
+  body {
     font-family: sans-serif;
   }
   .tooltip {
     position: absolute;
-    background-color: #fff;
+    background-color: white;
     border: 1px solid #ccc;
     padding: 5px;
     pointer-events: none;
     font-size: 12px;
   }
+  .filter-container {
+    margin-bottom: 20px;
+  }
 </style>
 
+
+<div class="filter-container">
+  <label for="seasonSelect">Select Season:</label>
+  <select id="seasonSelect">
+    <option value="Winter">Winter</option>
+    <option value="Spring">Spring</option>
+    <option value="Summer">Summer</option>
+    <option value="Fall">Fall</option>
+  </select>
+</div>
+
 <div id="plot"></div>
-<p></p>
+<div class="tooltip" id="tooltip" style="opacity: 0;"></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
