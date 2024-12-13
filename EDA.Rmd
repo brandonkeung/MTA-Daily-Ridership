@@ -177,5 +177,163 @@ ggplot(df, aes(x = `Bridges and Tunnels: Total Traffic`,
        x = "Total Traffic", y = "Subway Recovery Percentage")
 ```
 
+```{r}
+dataset <- read.csv("MTA_Daily_Ridership_Data__Beginning_2020.csv")
+```
+
+```{r}
+dataset$Date <- as.Date(dataset$Date, "%d/%m/%Y")
+```
+
+```{r}
+library(lubridate)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+```
 
 
+```{r}
+monthly_data <- dataset |>
+  mutate(Month = floor_date(Date, "month")) |>
+  group_by(Month) |>
+  summarize(across(c("Subways..Total.Estimated.Ridership", 
+                        "Buses..Total.Estimated.Ridership", 
+                        "LIRR..Total.Estimated.Ridership",
+                        "Metro.North..Total.Estimated.Ridership",
+                        "Access.A.Ride..Total.Scheduled.Trips",
+                        "Bridges.and.Tunnels..Total.Traffic",
+                        "Staten.Island.Railway..Total.Estimated.Ridership"), sum, na.rm = TRUE)) |>
+  pivot_longer(cols = -Month, names_to = "Transport_Mode", values_to = "Ridership")
+
+ggplot(monthly_data, aes(x = Month, y = Ridership, color = Transport_Mode)) +
+  geom_line() +
+  scale_y_log10() +
+  labs(title = "Ridership Trends Over Time Across Transportation Modes (Log Scale)",
+       x = "Month", y = "Ridership (Log Scale)", color = "Transport Mode") +
+  theme_minimal()
+```
+
+```{r}
+recovery_data <- dataset |>
+  summarize(across(ends_with("Comparable.Pre.Pandemic.Day"), mean, na.rm = TRUE)) |>
+  pivot_longer(cols = everything(), names_to = "Transport_Mode", values_to = "Recovery")
+
+# Cleveland dot plot
+ggplot(recovery_data, aes(x = Recovery, y = reorder(Transport_Mode, Recovery))) +
+  geom_point(color = "blue", size = 3) +
+  labs(title = "Average Recovery to Pre-Pandemic Levels by Mode",
+       x = "Recovery (%)", y = "Transport Mode") +
+  theme_minimal()
+```
+
+```{r}
+correlation_matrix <- dataset %>%
+  select(ends_with("Total.Estimated.Ridership"), ends_with("Comparable.Pre.Pandemic.Day")) %>%
+  cor()
+
+# Heatmap
+library(ggcorrplot)
+ggcorrplot(correlation_matrix, 
+           hc.order = TRUE, 
+           type = "lower",
+           title = "Correlation Between Ridership and Recovery Percentages",
+           lab = FALSE, # Remove the numbers in the squares
+           ggtheme = theme_minimal()) + 
+  theme(
+    plot.title = element_text(hjust = 0.5),  # Center the title
+    axis.text.x = element_text(size = 7),  # Adjust size of x-axis labels
+    axis.text.y = element_text(size = 7)   # Adjust size of y-axis labels
+  )
+```
+
+```{r}
+dataset$DayType <- ifelse(weekdays(as.Date(dataset$Date, "%d/%m/%Y")) %in% c("Saturday", "Sunday"), "Weekend", "Weekday")
+
+ggplot(dataset, aes(x = DayType, y = `Subways..Total.Estimated.Ridership`, fill = DayType)) +
+  geom_boxplot() +
+  labs(title = "Ridership by Day Type (Weekday vs. Weekend)",
+       x = "Day Type", y = "Subway Total.Estimated.Ridership") +
+  theme_minimal()
+```
+
+```{r}
+dataset$Season <- case_when(
+  month(dataset$Date) %in% c(12, 1, 2) ~ "Winter",
+  month(dataset$Date) %in% c(3, 4, 5) ~ "Spring",
+  month(dataset$Date) %in% c(6, 7, 8) ~ "Summer",
+  month(dataset$Date) %in% c(9, 10, 11) ~ "Fall"
+)
+
+# Recreate long_data including the Season column
+long_data <- dataset %>%
+  pivot_longer(cols = c("Subways..Total.Estimated.Ridership", 
+                        "Buses..Total.Estimated.Ridership", 
+                        "LIRR..Total.Estimated.Ridership",
+                        "Metro.North..Total.Estimated.Ridership",
+                        "Access.A.Ride..Total.Scheduled.Trips",
+                        "Bridges.and.Tunnels..Total.Traffic",
+                        "Staten.Island.Railway..Total.Estimated.Ridership"),
+               names_to = "Transport_Mode",
+               values_to = "Ridership") %>%
+  mutate(Season = case_when(
+    month(Date) %in% c(12, 1, 2) ~ "Winter",
+    month(Date) %in% c(3, 4, 5) ~ "Spring",
+    month(Date) %in% c(6, 7, 8) ~ "Summer",
+    month(Date) %in% c(9, 10, 11) ~ "Fall"
+  ))
+
+# Plot with density
+ggplot(long_data, aes(x = Ridership, fill = Season)) +
+  geom_density(alpha = 0.6) +
+  facet_wrap(~ Transport_Mode, scales = "free") +
+  labs(title = "Seasonal Density of Ridership by Transportation Mode",
+       x = "Ridership", y = "Density") +
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, size = 6))
+```
+
+```{r}
+library(fmsb)
+library(stringr)
+
+normalized_data <- dataset %>%
+  mutate(across(where(is.numeric), ~ scale(.) %>% as.numeric()))
+
+# Select only ridership columns and reshape data for heatmap
+heatmap_data <- normalized_data %>%
+  select("Date","Subways..Total.Estimated.Ridership", 
+                        "Buses..Total.Estimated.Ridership", 
+                        "LIRR..Total.Estimated.Ridership",
+                        "Metro.North..Total.Estimated.Ridership",
+                        "Access.A.Ride..Total.Scheduled.Trips",
+                        "Bridges.and.Tunnels..Total.Traffic",
+                        "Staten.Island.Railway..Total.Estimated.Ridership") %>%
+  pivot_longer(cols = -Date, names_to = "Transport_Mode", values_to = "Normalized_Ridership")
+
+# Shorten column names for Transport_Mode
+heatmap_data$Transport_Mode <- str_replace(heatmap_data$Transport_Mode, "\\..*", "")
+
+ggplot(heatmap_data, aes(x = Date, y = Normalized_Ridership, color = Transport_Mode)) +
+  geom_line() +
+  facet_wrap(~ Transport_Mode, scales = "free_y") +
+  labs(title = "Ridership Trends Over Time by Transportation Mode",
+       x = "Date", y = "Normalized Ridership") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+```{r}
+recovery_data <- dataset %>%
+  summarize(across(ends_with("Comparable.Pre.Pandemic.Day"), mean, na.rm = TRUE)) %>%
+  pivot_longer(cols = everything(), names_to = "Transport_Mode", values_to = "Recovery") %>%
+  mutate(Comparison = ifelse(grepl("Bridges and Tunnels", Transport_Mode), "Bridges", "Other Modes"))
+
+ggplot(recovery_data, aes(x = reorder(Transport_Mode, Recovery), y = Recovery, fill = Comparison)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  labs(title = "Recovery Comparison: Bridges vs. Other Modes",
+       x = "Transportation Mode", y = "Recovery (%)") +
+  theme_minimal()
+```

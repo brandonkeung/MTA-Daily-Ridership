@@ -25,43 +25,7 @@ From the previous graphics, we noticed that Bridges and Tunnels seemed to differ
 ## How did the pandemic affect ridership accross different modes of transportation over time?
 Understanding the temporal effects of the pandemic on transportation usage is critical for planning recovery strategies and future crises. Comparing the trends across all transportation modes will reveal resilience or vulnerabilities in the system. It is expected that different transportation modes might show varying recovery rates based on accessibility or dependence.Identifying patterns will help assess infrastructure priorities and evaluate public behavior changes.
 
-```{r}
-dataset <- read.csv("MTA_Daily_Ridership_Data__Beginning_2020.csv")
-```
-
-```{r}
-dataset$Date <- as.Date(dataset$Date, "%d/%m/%Y")
-```
-
-```{r}
-library(lubridate)
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-```
-
-
-```{r}
-monthly_data <- dataset |>
-  mutate(Month = floor_date(Date, "month")) |>
-  group_by(Month) |>
-  summarize(across(c("Subways..Total.Estimated.Ridership", 
-                        "Buses..Total.Estimated.Ridership", 
-                        "LIRR..Total.Estimated.Ridership",
-                        "Metro.North..Total.Estimated.Ridership",
-                        "Access.A.Ride..Total.Scheduled.Trips",
-                        "Bridges.and.Tunnels..Total.Traffic",
-                        "Staten.Island.Railway..Total.Estimated.Ridership"), sum, na.rm = TRUE)) |>
-  pivot_longer(cols = -Month, names_to = "Transport_Mode", values_to = "Ridership")
-
-ggplot(monthly_data, aes(x = Month, y = Ridership, color = Transport_Mode)) +
-  geom_line() +
-  scale_y_log10() +
-  labs(title = "Ridership Trends Over Time Across Transportation Modes (Log Scale)",
-       x = "Month", y = "Ridership (Log Scale)", color = "Transport Mode") +
-  theme_minimal()
-```
-
+![](images/000020.png)
 
 Findings: From the graph we can deduce that the subway has constantly been the preferred mode of transportation relative to all the other modes.It is also interesting to find that bridge and tunnel traffic has stayed very constant throughout the time frame.In regards to all the modes; it seems they have all stayed constant in terms of ridership preference as no mode has overtaken the other.Thus, identifying these patterns can help assess infrastructure priorities and evaluate public behavior changes.
 
@@ -71,19 +35,7 @@ Findings: From the graph we can deduce that the subway has constantly been the p
 ## What is the recovery of the modes or transportation compared to pre-pandemic levels?
 Identifying the recovery rates across different modes is key to allocating resources effectively. Comparing the "percentage of Comparable Pre-Pandemic Day" columns for each mode of transportation can highlight which transportation services have regained their ridership and which still fall behind.
 
-
-```{r}
-recovery_data <- dataset |>
-  summarize(across(ends_with("Comparable.Pre.Pandemic.Day"), mean, na.rm = TRUE)) |>
-  pivot_longer(cols = everything(), names_to = "Transport_Mode", values_to = "Recovery")
-
-# Cleveland dot plot
-ggplot(recovery_data, aes(x = Recovery, y = reorder(Transport_Mode, Recovery))) +
-  geom_point(color = "blue", size = 3) +
-  labs(title = "Average Recovery to Pre-Pandemic Levels by Mode",
-       x = "Recovery (%)", y = "Transport Mode") +
-  theme_minimal()
-```
+![](images/000021.png)
 
 Findings: From the graphic, we can see that Bridges and tunnels as well as Access A Ride have seen the highest levels of recovery. We can hypothesize that this swift recovery is because commuters and people with disabilities really do not have many options when it comes to transportation.This information can influence policies can focus on struggling modes, promoting ridership through targeted interventions.
 
@@ -92,25 +44,7 @@ Findings: From the graphic, we can see that Bridges and tunnels as well as Acces
 ## What are the correlations between ridership and pre-pandemic recovery percentages across modes?
 We want to uncover if higher total ridership corresponds to higher recovery percentages, revealing structural dependencies. Modes with higher recovery may indicate critical systems, while weak correlations could suggest alternative modes or varying dependencies.
 
-```{r}
-correlation_matrix <- dataset %>%
-  select(ends_with("Total.Estimated.Ridership"), ends_with("Comparable.Pre.Pandemic.Day")) %>%
-  cor()
-
-# Heatmap
-library(ggcorrplot)
-ggcorrplot(correlation_matrix, 
-           hc.order = TRUE, 
-           type = "lower",
-           title = "Correlation Between Ridership and Recovery Percentages",
-           lab = FALSE, # Remove the numbers in the squares
-           ggtheme = theme_minimal()) + 
-  theme(
-    plot.title = element_text(hjust = 0.5),  # Center the title
-    axis.text.x = element_text(size = 7),  # Adjust size of x-axis labels
-    axis.text.y = element_text(size = 7)   # Adjust size of y-axis labels
-  )
-```
+![](images/000022.png)
 
 Findings:Across the board there is positive correlation between each factor. This shows us that the ridership generally moves in relation with each other in whichever direction. This creates great insights will help optimize services for sustained demand.
 
@@ -121,16 +55,8 @@ Findings:Across the board there is positive correlation between each factor. Thi
 # What is the behavior of subway ridership from weekdays to weekends?
 These trends can indicate commuting patterns and leisure travel dynamics. Post-pandemic, commuting and recreational patterns might have shifted, affecting peak usage times.
 
+![](images/000024.png)
 
-```{r}
-dataset$DayType <- ifelse(weekdays(as.Date(dataset$Date, "%d/%m/%Y")) %in% c("Saturday", "Sunday"), "Weekend", "Weekday")
-
-ggplot(dataset, aes(x = DayType, y = `Subways..Total.Estimated.Ridership`, fill = DayType)) +
-  geom_boxplot() +
-  labs(title = "Ridership by Day Type (Weekday vs. Weekend)",
-       x = "Day Type", y = "Subway Total.Estimated.Ridership") +
-  theme_minimal()
-```
 Findings: Here we see that the inter-quartile range of the weekday and weekend ridership is identical however there is a higher usage average on the weekends. This could be attributed to more people working from home during and after the pandemic as well as the increased tourism and yearn to socialize after the pandemic. Information like this can influence schedule optimization and fare policy adjustments.
 
 
@@ -140,42 +66,7 @@ Findings: Here we see that the inter-quartile range of the weekday and weekend r
 ## Are certain transportation modes more affected during specific seasons?
 Seasonal variations may affect transportation modes differently, depending on weather, holidays, and tourism. Comparing seasonal ridership trends can help predict demand.
 
-
-```{r}
-dataset$Season <- case_when(
-  month(dataset$Date) %in% c(12, 1, 2) ~ "Winter",
-  month(dataset$Date) %in% c(3, 4, 5) ~ "Spring",
-  month(dataset$Date) %in% c(6, 7, 8) ~ "Summer",
-  month(dataset$Date) %in% c(9, 10, 11) ~ "Fall"
-)
-
-# Recreate long_data including the Season column
-long_data <- dataset %>%
-  pivot_longer(cols = c("Subways..Total.Estimated.Ridership", 
-                        "Buses..Total.Estimated.Ridership", 
-                        "LIRR..Total.Estimated.Ridership",
-                        "Metro.North..Total.Estimated.Ridership",
-                        "Access.A.Ride..Total.Scheduled.Trips",
-                        "Bridges.and.Tunnels..Total.Traffic",
-                        "Staten.Island.Railway..Total.Estimated.Ridership"),
-               names_to = "Transport_Mode",
-               values_to = "Ridership") %>%
-  mutate(Season = case_when(
-    month(Date) %in% c(12, 1, 2) ~ "Winter",
-    month(Date) %in% c(3, 4, 5) ~ "Spring",
-    month(Date) %in% c(6, 7, 8) ~ "Summer",
-    month(Date) %in% c(9, 10, 11) ~ "Fall"
-  ))
-
-# Plot with density
-ggplot(long_data, aes(x = Ridership, fill = Season)) +
-  geom_density(alpha = 0.6) +
-  facet_wrap(~ Transport_Mode, scales = "free") +
-  labs(title = "Seasonal Density of Ridership by Transportation Mode",
-       x = "Ridership", y = "Density") +
-  theme_minimal()+
-  theme(axis.text.x = element_text(angle = 45, size = 6))
-```
+![](images/000025.png)
 
 Findings: This visual is quite interesting as it continues to highlight the high correlation of the modes of transportation in terms of ridership. In all seasons, the spring and summer tends to have slightly more activity throughout the years. For the MTA, Seasonal data can inform promotional campaigns and maintenance schedules.
 
@@ -185,38 +76,7 @@ Findings: This visual is quite interesting as it continues to highlight the high
 ## How does Access-A-Ride usage differ compared to other modes, especially during and post-pandemic?
 Access-A-Ride caters to specific populations, and its usage patterns may reveal social and mobility challenges during crises.This specialized service might show distinct trends compared to other modes.
 
-
-```{r}
-library(fmsb)
-library(stringr)
-
-normalized_data <- dataset %>%
-  mutate(across(where(is.numeric), ~ scale(.) %>% as.numeric()))
-
-# Select only ridership columns and reshape data for heatmap
-heatmap_data <- normalized_data %>%
-  select("Date","Subways..Total.Estimated.Ridership", 
-                        "Buses..Total.Estimated.Ridership", 
-                        "LIRR..Total.Estimated.Ridership",
-                        "Metro.North..Total.Estimated.Ridership",
-                        "Access.A.Ride..Total.Scheduled.Trips",
-                        "Bridges.and.Tunnels..Total.Traffic",
-                        "Staten.Island.Railway..Total.Estimated.Ridership") %>%
-  pivot_longer(cols = -Date, names_to = "Transport_Mode", values_to = "Normalized_Ridership")
-
-# Shorten column names for Transport_Mode
-heatmap_data$Transport_Mode <- str_replace(heatmap_data$Transport_Mode, "\\..*", "")
-
-ggplot(heatmap_data, aes(x = Date, y = Normalized_Ridership, color = Transport_Mode)) +
-  geom_line() +
-  facet_wrap(~ Transport_Mode, scales = "free_y") +
-  labs(title = "Ridership Trends Over Time by Transportation Mode",
-       x = "Date", y = "Normalized Ridership") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-```
-
+![](images/000026.png)
 
 Findings: For all modes we do see a significant drop after the pandemic but the metro, LIRR and Access A Ride have regained their ridership either close to pre-pandemic levels or above it. This could be caused by housing/ neighborhood migration, increased activity and the need for diverse transportation solutions. Findings will support accessibility policies and resource allocation.
 
@@ -227,41 +87,6 @@ Findings: For all modes we do see a significant drop after the pandemic but the 
 ## How do bridges and tunnels compare to other transit systems in terms of recovery and usage?
 Bridges and tunnels might serve as a proxy for private transportation recovery compared to public systems.  Different recovery trends can reveal preferences for public vs. private transport post-pandemic.
 
-```{r}
-recovery_data <- dataset %>%
-  summarize(across(ends_with("Comparable.Pre.Pandemic.Day"), mean, na.rm = TRUE)) %>%
-  pivot_longer(cols = everything(), names_to = "Transport_Mode", values_to = "Recovery") %>%
-  mutate(Comparison = ifelse(grepl("Bridges and Tunnels", Transport_Mode), "Bridges", "Other Modes"))
-
-ggplot(recovery_data, aes(x = reorder(Transport_Mode, Recovery), y = Recovery, fill = Comparison)) +
-  geom_bar(stat = "identity") +
-  coord_flip() +
-  labs(title = "Recovery Comparison: Bridges vs. Other Modes",
-       x = "Transportation Mode", y = "Recovery (%)") +
-  theme_minimal()
-```
+![](images/000027.png)
 
 Findings: Post-pandemic ridership has indeed changed as people adapted to the new way of living. From this visual it seems more people left the inner city to other neighborhoods that driving is a lot more feasible in while still having attachments (jobs, friends/family) in the city. As bridges and tunnels have recovered a lot better since the pandemic there can be discussions that can help align policies for congestion and emissions reduction.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
