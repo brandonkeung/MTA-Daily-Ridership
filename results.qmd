@@ -173,7 +173,8 @@ ggplot(long_data, aes(x = Ridership, fill = Season)) +
   facet_wrap(~ Transport_Mode, scales = "free") +
   labs(title = "Seasonal Density of Ridership by Transportation Mode",
        x = "Ridership", y = "Density") +
-  theme_minimal()
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, size = 6))
 ```
 
 Findings: This visual is quite interesting as it continues to highlight the high correlation of the modes of transportation in terms of ridership. In all seasons, the spring and summer tends to have slightly more activity throughout the years. For the MTA, Seasonal data can inform promotional campaigns and maintenance schedules.
@@ -241,6 +242,7 @@ ggplot(recovery_data, aes(x = reorder(Transport_Mode, Recovery), y = Recovery, f
 ```
 
 Findings: Post-pandemic ridership has indeed changed as people adapted to the new way of living. From this visual it seems more people left the inner city to other neighborhoods that driving is a lot more feasible in while still having attachments (jobs, friends/family) in the city. As bridges and tunnels have recovered a lot better since the pandemic there can be discussions that can help align policies for congestion and emissions reduction.
+
 
 
 
