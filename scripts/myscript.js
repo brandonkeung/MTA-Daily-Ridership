@@ -18,7 +18,7 @@ const tooltip = d3.select("body")
 // Add a text element for displaying the date
 const dateText = svg.append("text")
     .attr("x", width / 2)
-    .attr("y", -10)
+    .attr("y", 10)
     .attr("text-anchor", "middle")
     .attr("font-size", "16px")
     .attr("font-weight", "bold")
