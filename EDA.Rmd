@@ -29,22 +29,6 @@ colSums(is.na(df))
 ```
 
 ```{r}
-missing_data <- data.frame(
-  Column = names(missing_counts),
-  Missing = missing_counts
-)
-
-# Create the bar plot
-bar_plot <- ggplot(missing_data, aes(x = Column, y = Missing)) +
-  geom_bar(stat = "identity", fill = "skyblue") +
-  theme_minimal() +
-  labs(title = "Missing Values by Column", x = "Columns", y = "Number of Missing Values") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, by = 1))
-bar_plot
-```
-
-```{r}
 bar_plot <- gg_miss_var(df, show_pct = TRUE) +
   ggtitle("Count of Missing Values by Variable") +
   theme_minimal()
@@ -52,12 +36,12 @@ bar_plot
 ```
 
 ```{r}
-data_long <- df %>%
+data_long <- df |>
   pivot_longer(cols = c(`Subways: Total Estimated Ridership`, 
                          `Buses: Total Estimated Ridership`, 
                          `LIRR: Total Estimated Ridership`, 
                          `Metro-North: Total Estimated Ridership`),
-               names_to = "Mode", values_to = "Ridership") %>%
+               names_to = "Mode", values_to = "Ridership") |>
   filter(grepl("Total Estimated Ridership", Mode))
 
 ggplot(data_long, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = Ridership, color = Mode)) +
@@ -72,7 +56,7 @@ df$PandemicPeriod <- ifelse(
   "Post-Pandemic"
 )
 
-data_percentages <- df %>%
+data_percentages <- df |>
   pivot_longer(
     cols = ends_with("% of Comparable Pre-Pandemic Day"),
     names_to = "Mode",
@@ -94,8 +78,8 @@ df$Date <- as.Date(df$Date, format = "%m/%d/%Y")
 df$Month <- format(df$Date, "%Y-%m")
 
 # Summarize the data by Month, summing the ridership columns
-monthly_ridership <- df %>%
-  group_by(Month) %>%
+monthly_ridership <- df |>
+  group_by(Month) |>
   summarise(
     TotalRidership = sum(`Subways: Total Estimated Ridership`, 
                          `Buses: Total Estimated Ridership`, 
@@ -118,7 +102,7 @@ ggplot(monthly_ridership, aes(x = Month, y = TotalRidership)) +
 ```{r}
 
 # Select the columns you're interested in
-ridership_data <- df %>%
+ridership_data <- df |>
   select(`Subways: Total Estimated Ridership`, 
          `Buses: Total Estimated Ridership`, 
          `LIRR: Total Estimated Ridership`, 
@@ -129,7 +113,7 @@ ggpairs(ridership_data, title = "Correlation Between Ridership of Different Mode
 ```
 
 ```{r}
-data_recovery <- df %>%
+data_recovery <- df |>
   pivot_longer(cols = ends_with("% of Comparable Pre-Pandemic Day"),
                names_to = "Mode", values_to = "RecoveryPercentage")
 
@@ -139,8 +123,8 @@ ggplot(data_recovery, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = RecoveryPe
 ```
 
 ```{r}
-# heatmap_data <- df %>%
-#   select(Date, ends_with("% of Comparable Pre-Pandemic Day")) %>%
+# heatmap_data <- df |>
+#   select(Date, ends_with("% of Comparable Pre-Pandemic Day")) |>
 #   melt(id.vars = "Date", variable.name = "Mode", value.name = "Percentage")
 
 # ggplot(heatmap_data, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = Mode, fill = Percentage)) +
@@ -158,9 +142,9 @@ ggplot(df, aes(x = as.Date(Date, format = "%m/%d/%Y"), y = `Bridges and Tunnels:
 ```{r}
 df$Year <- format(as.Date(df$Date, format = "%m/%d/%Y"), "%Y")
 
-annual_mode_share <- df %>%
-  group_by(Year) %>%
-  summarise(across(ends_with("Total Estimated Ridership"), sum, na.rm = TRUE)) %>%
+annual_mode_share <- df |>
+  group_by(Year) |>
+  summarise(across(ends_with("Total Estimated Ridership"), sum, na.rm = TRUE)) |>
   pivot_longer(-Year, names_to = "Mode", values_to = "Ridership")
 
 ggplot(annual_mode_share, aes(x = Year, y = Ridership, fill = Mode)) +
@@ -228,8 +212,8 @@ ggplot(recovery_data, aes(x = Recovery, y = reorder(Transport_Mode, Recovery))) 
 ```
 
 ```{r}
-correlation_matrix <- dataset %>%
-  select(ends_with("Total.Estimated.Ridership"), ends_with("Comparable.Pre.Pandemic.Day")) %>%
+correlation_matrix <- dataset |>
+  select(ends_with("Total.Estimated.Ridership"), ends_with("Comparable.Pre.Pandemic.Day")) |>
   cor()
 
 # Heatmap
@@ -266,7 +250,7 @@ dataset$Season <- case_when(
 )
 
 # Recreate long_data including the Season column
-long_data <- dataset %>%
+long_data <- dataset |>
   pivot_longer(cols = c("Subways..Total.Estimated.Ridership", 
                         "Buses..Total.Estimated.Ridership", 
                         "LIRR..Total.Estimated.Ridership",
@@ -275,7 +259,7 @@ long_data <- dataset %>%
                         "Bridges.and.Tunnels..Total.Traffic",
                         "Staten.Island.Railway..Total.Estimated.Ridership"),
                names_to = "Transport_Mode",
-               values_to = "Ridership") %>%
+               values_to = "Ridership") |>
   mutate(Season = case_when(
     month(Date) %in% c(12, 1, 2) ~ "Winter",
     month(Date) %in% c(3, 4, 5) ~ "Spring",
@@ -297,18 +281,18 @@ ggplot(long_data, aes(x = Ridership, fill = Season)) +
 library(fmsb)
 library(stringr)
 
-normalized_data <- dataset %>%
-  mutate(across(where(is.numeric), ~ scale(.) %>% as.numeric()))
+normalized_data <- dataset |>
+  mutate(across(where(is.numeric), ~ scale(.) |> as.numeric()))
 
 # Select only ridership columns and reshape data for heatmap
-heatmap_data <- normalized_data %>%
+heatmap_data <- normalized_data |>
   select("Date","Subways..Total.Estimated.Ridership", 
                         "Buses..Total.Estimated.Ridership", 
                         "LIRR..Total.Estimated.Ridership",
                         "Metro.North..Total.Estimated.Ridership",
                         "Access.A.Ride..Total.Scheduled.Trips",
                         "Bridges.and.Tunnels..Total.Traffic",
-                        "Staten.Island.Railway..Total.Estimated.Ridership") %>%
+                        "Staten.Island.Railway..Total.Estimated.Ridership") |>
   pivot_longer(cols = -Date, names_to = "Transport_Mode", values_to = "Normalized_Ridership")
 
 # Shorten column names for Transport_Mode
@@ -325,9 +309,9 @@ ggplot(heatmap_data, aes(x = Date, y = Normalized_Ridership, color = Transport_M
 ```
 
 ```{r}
-recovery_data <- dataset %>%
-  summarize(across(ends_with("Comparable.Pre.Pandemic.Day"), mean, na.rm = TRUE)) %>%
-  pivot_longer(cols = everything(), names_to = "Transport_Mode", values_to = "Recovery") %>%
+recovery_data <- dataset |>
+  summarize(across(ends_with("Comparable.Pre.Pandemic.Day"), mean, na.rm = TRUE)) |>
+  pivot_longer(cols = everything(), names_to = "Transport_Mode", values_to = "Recovery") |>
   mutate(Comparison = ifelse(grepl("Bridges and Tunnels", Transport_Mode), "Bridges", "Other Modes"))
 
 ggplot(recovery_data, aes(x = reorder(Transport_Mode, Recovery), y = Recovery, fill = Comparison)) +
